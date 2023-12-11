@@ -75,12 +75,10 @@ router.post("/addUser", (req, res) => {
                   "Erreur lors de l'envoi de l'e-mail de confirmation :",
                   emailErr
                 );
-                res
-                  .status(500)
-                  .json({
-                    error:
-                      "Une erreur s'est produite lors de l'envoi de l'e-mail de confirmation",
-                  });
+                res.status(500).json({
+                  error:
+                    "Une erreur s'est produite lors de l'envoi de l'e-mail de confirmation",
+                });
               } else {
                 res
                   .status(201)
@@ -168,7 +166,7 @@ router.get("/resetPassword/:email", (req, res) => {
   });
 });
 
-router.get("/users", (req, res) => {
+router.get("/getUsers", (req, res) => {
   connection.query("SELECT * from users", (err, data) => {
     if (err) throw err;
     res.status(200).json({
